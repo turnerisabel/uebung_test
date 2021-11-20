@@ -4,6 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "LL_LOCATION")
+@NamedQueries({
+        @NamedQuery(
+                name = "Location.findByName",
+                query = "select l from Location l where l.name like: NAME"
+        )
+})
 public class Location {
 
     @Id
@@ -20,6 +26,9 @@ public class Location {
     public Location(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Location(String station) {
     }
 
     public Long getId() {
