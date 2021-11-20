@@ -3,11 +3,12 @@ package at.htl.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "LINE")
+@Table(name = "LL_LINE")
 public class Line {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "LI_ID")
     private Long id;
 
     @Column(name = "LI_NAME", unique = true)

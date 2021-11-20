@@ -4,20 +4,24 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "STATION")
+@Table(name = "LL_STATION")
 public class Station {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ST_ID")
     private Long id;
 
     @ManyToOne
+    @Column(name = "ST_LI_ID")
     private Line line;
 
     @ManyToOne
+    @Column(name = "ST_LO_ID")
     private Location location;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @Column(name = "ST_PREVIOUS_ID")
     private Station prevStation;
 
     public Station() {
