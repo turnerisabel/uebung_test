@@ -1,25 +1,26 @@
-package at.htl.entity;
+package entity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "LL_LOCATION")
-public class Location {
+@Table(name = "LL_LINE")
+@NamedQueries({
+        @NamedQuery(
+                name = "Line.findByName",
+                query = "select l from Line l where l.name like: NAME"
+        )
+})
+public class Line {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "LO_ID")
+    @Column(name = "LI_ID")
     private Long id;
 
-    @Column(name = "LO_NAME")
+    @Column(name = "LI_NAME", unique = true)
     private String name;
 
-    public Location() {
-    }
-
-    public Location(Long id, String name) {
-        this.id = id;
-        this.name = name;
+    public Line() {
     }
 
     public Long getId() {
@@ -40,11 +41,9 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" +
+        return "Line{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }
 }
-
-

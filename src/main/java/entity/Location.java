@@ -1,20 +1,25 @@
-package at.htl.entity;
+package entity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "LL_LINE")
-public class Line {
+@Table(name = "LL_LOCATION")
+public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "LI_ID")
+    @Column(name = "LO_ID")
     private Long id;
 
-    @Column(name = "LI_NAME", unique = true)
+    @Column(name = "LO_NAME")
     private String name;
 
-    public Line() {
+    public Location() {
+    }
+
+    public Location(Long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Long getId() {
@@ -35,9 +40,11 @@ public class Line {
 
     @Override
     public String toString() {
-        return "Line{" +
+        return "Location{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }
 }
+
+
