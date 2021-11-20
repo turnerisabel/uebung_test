@@ -4,6 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "LL_STATION")
+@NamedQueries({
+        @NamedQuery(
+                name = "Station.stationsPerLine",
+                query = "select s from Station s where s.line.name like :LINE"
+        )
+})
 public class Station {
 
     @Id
@@ -31,6 +37,9 @@ public class Station {
         this.line = line;
         this.location = location;
         this.prevStation = prevStation;
+    }
+
+    public Station(Line line, Location location, Station prevStation) {
     }
 
     public Long getId() {
